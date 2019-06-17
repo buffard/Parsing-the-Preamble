@@ -5,7 +5,7 @@ const preamble = "We the People of the United States, in Order to form a more pe
 function constitutionParse(a) {
   //The first thing I wanted to do was to strip away all the punctuation from the string.  I used a simple replace i.e.(a.replace(",", "")) but then I realized that it was only doing it to the first instance of the comma. In my searches I found this pretty slick expression [^\w\s]|_.  It will strip anything that is not a number, letter, whitespace, or underscore.  Then adding the g makes it a global modifier and will do for every instance instead of just the first.
   let stripPunctuation = a.replace(/\./g, '').replace(/,/g, '')
-  
+  //make the entire string the same case
   let lowerCase = stripPunctuation.toLowerCase()
   // I then split all the words up and put them in an array
   let wordArray = lowerCase.split(" ")
@@ -14,7 +14,7 @@ function constitutionParse(a) {
   let eEndCount = 0
   let tStartEEnd = 0
   //For every word in my array
-  for (word of wordArray) {
+  for (var word of wordArray) {
     // Check to see if the first character is equal to "T"
     if(word[0] === 't') {
       //if so increase tStartCount tally by one
@@ -36,7 +36,3 @@ function constitutionParse(a) {
 }
 
 constitutionParse(preamble)
-
-
-
-
